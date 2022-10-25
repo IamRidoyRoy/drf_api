@@ -5,4 +5,4 @@ class StatusAdmin(admin.ModelAdmin):
     list_display = ["user", 'content', 'image']
     class  Meta: 
         model = Status
-admin.site.register(Status, StatusAdmin)
+admin.site.register(Status, StatusAdmin) 
