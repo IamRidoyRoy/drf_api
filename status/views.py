@@ -4,7 +4,7 @@ from .serializers import StatusSerializer
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework.generics import ListAPIView, CreateAPIView , RetrieveAPIView, UpdateAPIView
+from rest_framework.generics import ListAPIView, CreateAPIView , RetrieveAPIView, UpdateAPIView, DestroyAPIView
 # Create your views here.
 class StatusApiView(APIView):
     def get(self, request, format=None):
@@ -36,3 +36,8 @@ class UpdateApiContent(UpdateAPIView):
     serializer_class = StatusSerializer
     lookup_field = "id"
 
+# Delete any status 
+class DeleteStatus(DestroyAPIView):
+    queryset = Status.objects.all()
+    serializer_class = StatusSerializer
+    lookup_field = "id"
