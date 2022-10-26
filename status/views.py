@@ -18,4 +18,7 @@ class StatusListApiView(ListAPIView):
     serializer_class = StatusSerializer  
 
 
-
+# CreateApiView  for Post any Content 
+class StatusCreateApiView(CreateAPIView):
+    queryset = Status.objects.all()
+    serializer_class = StatusSerializer
