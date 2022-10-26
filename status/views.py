@@ -4,7 +4,7 @@ from .serializers import StatusSerializer
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework.generics import ListAPIView, CreateAPIView
+from rest_framework.generics import ListAPIView, CreateAPIView , RetrieveAPIView
 # Create your views here.
 class StatusApiView(APIView):
     def get(self, request, format=None):
@@ -22,3 +22,9 @@ class StatusListApiView(ListAPIView):
 class StatusCreateApiView(CreateAPIView):
     queryset = Status.objects.all()
     serializer_class = StatusSerializer
+
+#Watch a single post view by pk, id 
+class StatusDetailsApiView(RetrieveAPIView):
+    queryset= Status.objects.all()
+    serializer_class = StatusSerializer
+    lookup_field = "id"
