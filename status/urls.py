@@ -1,10 +1,10 @@
 from django.urls import URLPattern, path
-from .views import StatusApiView, StatusCreateApiView, StatusDetailsApiView, StatusListApiView, UpdateApiContent,DeleteStatus
+from .views import (StatusDetailsApiView,StatusListCreateView)
+
+# status/ - List, Create => GET , POST
+# status/<id>/ - Details,Delete, Update(Put/Patch)
 urlpatterns = [
-    path('status/', StatusApiView.as_view()),
-    path('status/list/', StatusListApiView.as_view()),
-    path('status/create/', StatusCreateApiView.as_view()),
-    path('status/details/<id>/', StatusDetailsApiView.as_view()),
-    path('status/update/<id>/', UpdateApiContent.as_view()),
-    path('status/delete/<id>/',DeleteStatus.as_view()),
-]
+    path('status/', StatusListCreateView.as_view()),
+    path('status/<id>/', StatusDetailsApiView.as_view())
+ 
+] 
