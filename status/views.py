@@ -4,23 +4,18 @@ from .serializers import StatusSerializer
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework.generics import ListAPIView, CreateAPIView , RetrieveAPIView, UpdateAPIView, DestroyAPIView
-from rest_framework import mixins
+from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
+# from rest_framework import mixins
 # Create your views here.
 
 
 # Create Api and watch Api view list 
-class StatusListCreateView(mixins.CreateModelMixin,ListAPIView):
+class StatusListCreateView(ListCreateAPIView):
     queryset = Status.objects.all()
     serializer_class = StatusSerializer
 
-    def post(self, request, *args, **kwargs):
-        return self.create(request, *args, **kwargs)
-
-
-
 #Watch a single post view, update or delete
-class StatusDetailsApiView(mixins.UpdateModelMixin, mixins.DestroyModelMixin,RetrieveAPIView):
+class StatusDetailsApiView(RetrieveUpdateDestroyAPIView):
     queryset= Status.objects.all()
     serializer_class = StatusSerializer
     lookup_field = "id"
