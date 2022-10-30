@@ -6,7 +6,7 @@ from rest_framework import parsers
 # Create your views here.
 
 
-# Create Api and watch Api view list 
+# Create Api and watch Api view list  
 class StatusListCreateView(ListCreateAPIView):
     queryset = Status.objects.all()
     serializer_class = StatusSerializer
@@ -19,5 +19,4 @@ class StatusDetailsUpdateDeleteView(RetrieveUpdateDestroyAPIView):
     lookup_field = "id"
     parser_classes = [parsers.FormParser, parsers.MultiPartParser]
 
-    
     
