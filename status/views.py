@@ -2,7 +2,7 @@
 from .models import Status
 from .serializers import StatusSerializer
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
-from rest_framework import parsers
+from rest_framework import parsers, viewsets
 # Create your views here.
 
 
@@ -19,4 +19,9 @@ class StatusDetailsUpdateDeleteView(RetrieveUpdateDestroyAPIView):
     lookup_field = "id"
     parser_classes = [parsers.FormParser, parsers.MultiPartParser]
 
-    
+
+# Operate all crud operations with one Class and Link: 
+class StatusViewsets(viewsets.ModelViewSet):
+    queryset = Status.objects.all()
+    serializer_class = StatusSerializer
+    parser_classes = [parsers.FormParser, parsers.MultiPartParser]
